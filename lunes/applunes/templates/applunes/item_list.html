@@ -1,16 +1,14 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Items</h1>
+{% extends 'base.html' %}
 
+
+{% block title %}Item List{% endblock %}
+
+{% block content %}
+    <h1>Items</h1>
+    <button id="theme-toggle">Toggle Theme</button>
 
     {% if items %}
-        <ul role="list">
+        <ul class="item-list" role="list">
             {% for item in items %}
                 <li role="listitem">
                     <strong>{{ item.name }}</strong> - ${{ item.price }}
@@ -20,8 +18,8 @@
         </ul>
 
         <!-- Navegación de Paginación -->
-        <div >
-            <span>
+        <div class="pagination">
+            <span class="step-links">
                 {% if items.has_previous %}
                     <a href="?page=1">Primera</a>
                     <a href="?page={{ items.previous_page_number }}">Anterior</a>
@@ -43,8 +41,6 @@
 
     <div>
         <h2>Example Image</h2>
-        
+       
     </div>
-
-</body>
-</html>
+{% endblock %}

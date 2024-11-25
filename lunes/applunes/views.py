@@ -1,4 +1,3 @@
-"""
 from typing import Any
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render
@@ -16,7 +15,7 @@ def item_list(request: HttpRequest) -> HttpResponse:
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
 
-    return render(request, 'item_list.html', {'items': page_obj})
+    return render(request, 'applunes/item_list.html', {'items': page_obj})
 
 """
 from django.views.generic import ListView
@@ -24,7 +23,8 @@ from .models import Item
 
 class ItemListView(ListView):
     model = Item
-    template_name = 'item_list.html'
+    template_name = 'myapp/item_list.html'
     context_object_name = 'items'
     paginate_by = 10
 
+"""
